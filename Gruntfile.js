@@ -113,7 +113,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['jshint','test','concat','uglify','cssmin']);
+  grunt.registerTask('build', ['jshint','concat','uglify','cssmin']);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
