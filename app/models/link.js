@@ -12,8 +12,6 @@ var urlSchema = new mongoose.Schema({
   timestamps: Date
 });
 
-var Link = mongoose.model('url', urlSchema);
-
 urlSchema.on('init', function(linkModel){
   linkModel.on('creating', function(model, attrs, options){
     var shasum = crypto.createHash('sha1');
@@ -22,20 +20,6 @@ urlSchema.on('init', function(linkModel){
   });
 });
 
-
-// var Link = db.Model.extend({
-//   tableName: 'urls',
-//   hasTimestamps: true,
-//   defaults: {
-//     visits: 0
-//   },
-//   initialize: function(){
-//     this.on('creating', function(model, attrs, options){
-//       var shasum = crypto.createHash('sha1');
-//       shasum.update(model.get('url'));
-//       model.set('code', shasum.digest('hex').slice(0, 5));
-//     });
-//   }
-// });
+var Link = mongoose.model('url', urlSchema);
 
 module.exports = Link;
