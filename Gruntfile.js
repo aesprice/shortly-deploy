@@ -42,10 +42,9 @@ module.exports = function(grunt) {
 
     jshint: {
       files: [
-        // Add filespec list here
+        'public/client/*.js'
       ],
       options: {
-        force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
           'public/lib/**/*.js',
@@ -114,7 +113,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['concat','uglify','cssmin']);
+  grunt.registerTask('build', ['jshint','concat','uglify','cssmin']);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
@@ -126,7 +125,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', []);
 
-  grunt.registerTask('default', ['concat']);
+  grunt.registerTask('default', ['jshint', 'concat']);
 
 
 };
