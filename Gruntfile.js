@@ -55,6 +55,11 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      minify:{
+        dest: 'public/dist/',
+        src: 'public/style.css',
+        ext: '.min.css'
+      }
     },
 
     watch: {
@@ -110,7 +115,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', ['concat','uglify']);
+  grunt.registerTask('build', ['concat','uglify','cssmin']);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
