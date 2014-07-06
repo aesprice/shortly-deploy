@@ -32,6 +32,12 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      dist:{
+        files: {
+          'public/dist/lib.min.js':'public/dist/lib.js',
+          'public/dist/<%= pkg.name %>.min.js':'public/dist/<%= pkg.name %>.js'
+        }
+      }
     },
 
     jshint: {
@@ -104,8 +110,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', [
-  ]);
+  grunt.registerTask('build', ['concat','uglify']);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
@@ -115,9 +120,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('deploy', [
-    // add your deploy tasks here
-  ]);
+  grunt.registerTask('deploy', []);
 
   grunt.registerTask('default', ['concat']);
 
